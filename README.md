@@ -5,8 +5,8 @@ Modified version of https://github.com/go-yaml/yaml
 This version of yaml parser will also achieve Java Spring functionality where 
 values that look like ${VALUE} will get replaced with values from environment variables.
 
-##Usage example:
-
+## Usage example:
+```go
 type Config struct {
     Port     string   `yaml:"port"`
     RabbitMQ RabbitMQ `yaml:"rabbitmq"`
@@ -29,8 +29,9 @@ func main() {
     yaml.Unmarshal(file, &config)
     spew.Dump(config)
 }
+```
 This is how application.yaml looks like:
-
+```yaml
 port: ${SERVER_PORT}
 rabbitmq:
   host: ${RMQ_HOST}
@@ -38,5 +39,5 @@ rabbitmq:
   username: ${RMQ_USERNAME}
   password: ${RMQ_PASSWORD}
   vhost: test
-
+```
 vhost value will get parsed as usual, while everything surrounded with "${" and "}" will get replaced with environment variables.
